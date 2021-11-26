@@ -6,12 +6,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-public class Creerf {
+public class CreerFichier {
 	public static void main(String[] args) {
 		try{
 		Scanner inputReader = new Scanner(System.in);
-		//On demande à l'utilisateur le nom du nouveau fichier
-		System.out.println("Entree le nom du fichier avec .txt à la fin: ");
+		//On demande Ã  l'utilisateur le nom du nouveau fichier
+		System.out.println("Entree le nom du fichier avec .txt Ã  la fin: ");
 		String txt = inputReader.next();
 	    String fileName = txt;
 	    String encoding = "UTF-8";
