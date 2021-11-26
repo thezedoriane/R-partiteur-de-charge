@@ -33,7 +33,7 @@ public class CreerFichier {
 	        fw.close();
 	    }
 	    catch (IOException e){
-	      System.out.println("An error occurred.");
+	      System.out.println("Une erreur est survenue.");
 	      e.printStackTrace();
 	    }
 	  }
