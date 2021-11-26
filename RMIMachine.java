@@ -11,18 +11,18 @@ public class RMIMachine {
         try {
         	//On appel le registre au port 8000
             Registry registry = LocateRegistry.getRegistry("127.0.0.1", 8000);  
-            //On demande a avoir l'aiguilleur appelle "nom aiguilleur"
-            Aiguilleur aiguilleur = (Aiguilleur) registry.lookup("nom aiguilleur");
+            //On demande a avoir l'aiguilleur appelle "hello"
+            Aiguilleur aiguilleur = (Aiguilleur) registry.lookup("hello");
             System.out.println("Aiguilleur trouve");
             //On cree une machine que l'on exporte, pour l'ajouter a la liste des machines de l'aiguilleur
             MachineImp machinesup = new MachineImp();
             Machine ms = (Machine) UnicastRemoteObject.exportObject(machinesup, 0);
-            System.out.println("Machine cree et exporte.");
-            //Appel de la methode Ã  distance
+            System.out.println("Machine creer et exporter.");
+            //Appel de la methode à distance
             System.out.println("Ajout de la machine a la liste de laiguilleur...");
             Boolean fait = aiguilleur.ajouterM(ms); 
             System.out.println("Machine ajoutee");
-            
+            //System.out.println(aiguilleur.lecture("f2.txt"));
         } catch (RemoteException | NotBoundException e) {
             e.printStackTrace();
         }

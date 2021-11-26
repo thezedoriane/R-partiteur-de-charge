@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class AiguilleurImp implements Aiguilleur{
 	
 	public ArrayList<Machine> listeM;
+	public ArrayList<String> listeFnonautorise = new ArrayList<String>();
 	
 	public AiguilleurImp(ArrayList<Machine> lm) {
 		this.listeM=lm;
@@ -14,11 +15,27 @@ public class AiguilleurImp implements Aiguilleur{
 	@Override
 	public String lecture(String nomf) throws RemoteException, Exception {
 		String contenu = "";
+		synchronized (listeFnonautorise) {
+		while (listeFnonautorise.contains(nomf)) {
+			try {
+                listeFnonautorise.wait();
+            } catch (InterruptedException e)  {
+                e.printStackTrace();
+            }
+		}	
+	    }
+		//On bloque le fichier aux autres
+		listeFnonautorise.add(nomf);
 		//on demande a une machine de lire le fichier et de renvoyer le contenu
 		Machine m = retirerM();
 		System.out.println(m);
 		contenu = m.lecture(nomf);
 		ajouterM(m);
+		//On debloque le fichier
+		synchronized (listeFnonautorise) {
+		listeFnonautorise.remove(nomf);
+		listeFnonautorise.notifyAll();
+		}
 		return contenu;
 	}
 
@@ -28,8 +45,21 @@ public class AiguilleurImp implements Aiguilleur{
 		boolean fait = false;
 		Machine m = retirerM();
 		System.out.println(m);
+		synchronized (listeFnonautorise) {
+			while (listeFnonautorise.contains(nomf)) {
+				try {
+					listeFnonautorise.wait();
+	            } catch (InterruptedException e)  {
+	                e.printStackTrace();
+	            }
+			}	
+		    }
 		fait = m.ecriture(nomf,data);
 		ajouterM(m);
+		synchronized (listeFnonautorise) {
+			listeFnonautorise.remove(nomf);
+			listeFnonautorise.notifyAll();
+		}
 		return fait;
 	}
 
