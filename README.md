@@ -13,3 +13,4 @@ Et finalement nous créons des clients avec des requêtes pour l'aiguilleur avec
 Pour ce projet nous avons fait l'hypothèse que la distribution des tâches aux machines se fait selon un cycle. Ainsi que les machines ont accès aux mêmes fichiers.
 
 Attention pour reprendre ce code les fichiers ont été mis dans un package du nom de repartiteur.
+Et voir la branche 2 pour amélioration.
