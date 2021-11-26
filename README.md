@@ -11,3 +11,5 @@ Nous créons ensuite une ou plusieurs machines en lancant une ou plusieurs fois 
 Et finalement nous créons des clients avec des requêtes pour l'aiguilleur avec RMIClient.
 
 Pour ce projet nous avons fait l'hypothèse que la distribution des tâches aux machines se fait selon un cycle. Ainsi que les machines ont accès aux mêmes fichiers.
+
+Attention pour reprendre ce code les fichiers ont été mis dans un package du nom de repartiteur.
