@@ -10,4 +10,4 @@ L'aiguilleur est enregistré dans un registre lancé chacun avec Registry et RMI
 Nous créons ensuite une ou plusieurs machines en lancant une ou plusieurs fois RMIMachine. 
 Et finalement nous créons des clients avec des requêtes pour l'aiguilleur avec RMIClient.
 
-Pour ce projet nous avons fait l'hypothèse que la distribution des tâches aux machines se fait selon un cycle. 
+Pour ce projet nous avons fait l'hypothèse que la distribution des tâches aux machines se fait selon un cycle. Ainsi que les machines ont accès aux mêmes fichiers.
