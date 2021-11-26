@@ -10,20 +10,20 @@ public class RMIClient {
         try {
         	//On appel le registre au port 8000
             Registry registry = LocateRegistry.getRegistry("127.0.0.1", 8000);  
-            //On demande à avoir l'aiguilleur appelle "hello"
-            Aiguilleur aiguilleur = (Aiguilleur) registry.lookup("hello"); 
+            //On demande Ã  avoir l'aiguilleur appelle "nom aiguilleur"
+            Aiguilleur aiguilleur = (Aiguilleur) registry.lookup("nom aiguilleur"); 
             //Appel de la methode a distance
-            //String contenu=aiguilleur.lecture("f2.txt"); 
-            //System.out.println(contenu);
-            String data="Bonjour\nJe m'appelle Doriane. \nEt je travaille avec Xin qui est trop choupi!";
-            Boolean ecrit=aiguilleur.ecriture("f1.txt", data);
+            String contenu=aiguilleur.lecture("nom du fichier a lire"); 
+            System.out.println(contenu);
+            String data="Texte souhaitÃ©";
+            Boolean ecrit=aiguilleur.ecriture("nom du fichier a editer", data);
             if (ecrit) {
-            	System.out.println("Le fichier a été modifié!");
-            	String contenu=aiguilleur.lecture("f1.txt"); 
+            	System.out.println("Le fichier a ete modifie!");
+            	contenu=aiguilleur.lecture("nom du fichier edite"); 
                 System.out.println(contenu);
             }
             else {
-            	System.out.println("Erreur d'écriture.");
+            	System.out.println("Erreur d'ecriture.");
             }
         } catch (RemoteException | NotBoundException e) {
             e.printStackTrace();
