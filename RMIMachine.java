@@ -18,11 +18,11 @@ public class RMIMachine {
             MachineImp machinesup = new MachineImp();
             Machine ms = (Machine) UnicastRemoteObject.exportObject(machinesup, 0);
             System.out.println("Machine creer et exporter.");
-            //Appel de la methode à distance
+            //Appel de la methode Ã  distance
             System.out.println("Ajout de la machine a la liste de laiguilleur...");
             Boolean fait = aiguilleur.ajouterM(ms); 
             System.out.println("Machine ajoutee");
-            //System.out.println(aiguilleur.lecture("f2.txt"));
+            
         } catch (RemoteException | NotBoundException e) {
             e.printStackTrace();
         }
